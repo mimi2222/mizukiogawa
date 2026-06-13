@@ -1,81 +1,93 @@
-import { Link } from 'react-router-dom'
+import { useEffect } from 'react'
 import { Reveal } from '../components/Reveal'
-import { ProjectCard } from '../components/ProjectCard'
+import { Photo } from '../components/Photo'
 import { profile } from '../data/profile'
-import { projects } from '../data/projects'
+import { Profile } from './Profile'
+import { Experience } from './Experience'
+import { Projects } from './Projects'
 
 export function Home() {
-  const featured = projects.filter((p) => p.featured)
+  // 最上部（about）に来たら 1 秒後に profile へゆっくり自動スクロール。
+  // ユーザーが自分でスクロール／操作したら割り込んで中断する。
+  useEffect(() => {
+    // 既に下へスクロールしている場合（途中からの遷移など）は何もしない
+    if (window.scrollY > 100) return
+
+    let cancelled = false
+    let raf = 0
+    const cancel = () => {
+      cancelled = true
+      window.cancelAnimationFrame(raf)
+      window.removeEventListener('wheel', cancel)
+      window.removeEventListener('touchstart', cancel)
+      window.removeEventListener('keydown', cancel)
+    }
+    window.addEventListener('wheel', cancel, { passive: true })
+    window.addEventListener('touchstart', cancel, { passive: true })
+    window.addEventListener('keydown', cancel)
+
+    // ゆっくりスクロール（自前アニメーション。ネイティブ smooth より遅く制御できる）
+    const slowScrollTo = (target: number, duration: number) => {
+      const start = window.scrollY
+      const distance = target - start
+      let startTime = 0
+      const easeInOutCubic = (t: number) =>
+        t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2
+      const step = (now: number) => {
+        if (cancelled) return
+        if (!startTime) startTime = now
+        const progress = Math.min((now - startTime) / duration, 1)
+        window.scrollTo(0, start + distance * easeInOutCubic(progress))
+        if (progress < 1) raf = window.requestAnimationFrame(step)
+      }
+      raf = window.requestAnimationFrame(step)
+    }
+
+    const timer = window.setTimeout(() => {
+      if (!cancelled) {
+        const profile = document.getElementById('profile')
+        if (profile) {
+          slowScrollTo(profile.getBoundingClientRect().top + window.scrollY, 1000)
+        }
+      }
+    }, 500)
+
+    return () => {
+      window.clearTimeout(timer)
+      cancel()
+    }
+  }, [])
 
   return (
     <>
-      {/* ヒーロー */}
-      <section className="hero">
+      {/* About（ヒーロー：着地点） */}
+      <section id="about" className="hero">
         <div className="container hero__inner">
           <Reveal className="hero__content">
-            <p className="eyebrow">{profile.roles.join(' · ')}</p>
             <h1 className="hero__title">
               <span className="hero__name-en">{profile.nameEn}</span>
               <span className="hero__name-jp">{profile.name}</span>
             </h1>
-            <p className="hero__tagline">{profile.tagline}</p>
-            <p className="hero__intro">{profile.heroIntro}</p>
-            <div className="hero__actions">
-              <Link to="/projects" className="btn btn--primary">
-                制作物を見る
-              </Link>
-              <Link to="/about" className="btn btn--ghost">
-                自己紹介
-              </Link>
-            </div>
           </Reveal>
-        </div>
-        <div className="hero__glow" aria-hidden="true" />
-      </section>
-
-      {/* 注目の実績 */}
-      <section className="section">
-        <div className="container">
-          <Reveal className="section__head section__head--row">
-            <div>
-              <span className="eyebrow">Selected Work</span>
-              <h2 className="section__title">注目の実績</h2>
-            </div>
-            <Link to="/projects" className="link-arrow">
-              すべて見る →
-            </Link>
+          <Reveal className="hero__media" delay={120}>
+            <Photo
+              src="/images/portrait.jpg"
+              alt={`${profile.name}のポートレート`}
+              label="Portrait"
+              className="hero__portrait"
+            />
           </Reveal>
-          <div className="grid grid--featured">
-            {featured.map((project, i) => (
-              <Reveal key={project.slug} delay={i * 80} as="div">
-                <ProjectCard project={project} featured />
-              </Reveal>
-            ))}
-          </div>
         </div>
       </section>
 
-      {/* セクションへの導線 */}
-      <section className="section section--tight">
-        <div className="container">
-          <div className="grid grid--nav">
-            {[
-              { to: '/about', en: 'About', jp: 'プロフィール / スキル / キャリア' },
-              { to: '/experience', en: 'Experience', jp: 'インターン・課外活動の経歴' },
-              { to: '/beyond', en: 'Beyond', jp: '技術以外に挑戦してきたこと' },
-              { to: '/contact', en: 'Contact', jp: 'お問い合わせ' },
-            ].map((item, i) => (
-              <Reveal key={item.to} delay={i * 60} as="div">
-                <Link to={item.to} className="card nav-card">
-                  <span className="nav-card__en">{item.en}</span>
-                  <span className="nav-card__jp">{item.jp}</span>
-                  <span className="nav-card__arrow">→</span>
-                </Link>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Profile（学歴・研究） */}
+      <Profile />
+
+      {/* Experience（経歴）— 学歴・研究のすぐ下 */}
+      <Experience />
+
+      {/* Projects（制作物） */}
+      <Projects />
     </>
   )
 }

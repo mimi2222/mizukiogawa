@@ -19,16 +19,15 @@ portfolio/
 │   ├── vercel.json           # Vercel: SPA ルーティングのフォールバック
 │   ├── public/               # 静的アセット（favicon 等）
 │   └── src/
-│       ├── App.tsx           # ルーティング定義
+│       ├── App.tsx           # ルーティング定義（/beyond は /projects へリダイレクト）
 │       ├── pages/            # ★ URLパスと1:1で対応するページ
-│       │   ├── Home.tsx          # /
-│       │   ├── About.tsx         # /about
-│       │   ├── Projects.tsx      # /projects
+│       │   ├── Home.tsx          # /          ヒーロー・注目実績・スナップショット
+│       │   ├── About.tsx         # /about     プロフィール・スキル・学歴
+│       │   ├── Projects.tsx      # /projects  制作物と挑戦（タグで絞り込み）
 │       │   ├── ProjectDetail.tsx # /projects/:slug
 │       │   ├── Experience.tsx    # /experience
-│       │   ├── Beyond.tsx        # /beyond
 │       │   └── Contact.tsx       # /contact
-│       ├── components/       # 再利用するUI部品
+│       ├── components/       # 再利用するUI部品（WorkCard, Photo, Reveal 等）
 │       ├── data/             # ★ 文章・実績データ（編集はここが中心）
 │       ├── hooks/
 │       └── styles/global.css # 色・余白・フォントは :root 変数で一元管理
@@ -57,11 +56,18 @@ npm run preview  # 本番ビルドの確認
 
 | ファイル | 内容 |
 |---|---|
-| `data/profile.ts` | 名前・肩書・自己紹介・キャリアビジョン・**連絡先** |
+| `data/profile.ts` | 名前・肩書・自己紹介・**連絡先** |
 | `data/skills.ts` | スキル一覧 |
+| `data/education.ts` | 学歴（新しい順に表示） |
 | `data/projects.ts` | 開発・研究実績（`/projects/:slug` に連動） |
+| `data/beyond.ts` | 技術以外の挑戦 |
+| `data/work.ts` | `projects` と `beyond` を統合（`/projects` ページのデータ源） |
+| `data/categories.ts` | 絞り込みカテゴリ（Tech / Business / Creative / Beyond） |
 | `data/experience.ts` | インターン・課外活動の経歴 |
-| `data/beyond.ts` | 挑戦してきたこと |
+| `data/gallery.ts` | スナップショット写真（趣味・ライフスタイル） |
+
+画像は `frontend/public/images/` に置きます（例: `portrait.jpg`, `snap-running.jpg`）。
+ファイルが無い間はプレースホルダーが表示され、置けば自動で差し替わります。
 
 ## Vercel へのデプロイ
 

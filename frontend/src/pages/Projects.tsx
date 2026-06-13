@@ -1,31 +1,25 @@
 import { Section } from '../components/Section'
 import { Reveal } from '../components/Reveal'
-import { ProjectCard } from '../components/ProjectCard'
-import { projects } from '../data/projects'
+import { WorkCard } from '../components/WorkCard'
+import { workItems } from '../data/work'
 
 export function Projects() {
-  const featured = projects.filter((p) => p.featured)
-  const others = projects.filter((p) => !p.featured)
+  // 注目の項目を先頭に
+  const sorted = [...workItems].sort(
+    (a, b) => Number(Boolean(b.featured)) - Number(Boolean(a.featured)),
+  )
 
   return (
     <Section
-      eyebrow="Work"
-      title="開発・研究実績"
-      intro="LLMを活用したプロダクト開発・研究から、個人開発まで。各カードをクリックすると詳細を表示します。"
+      id="projects"
+      eyebrow="Work & Beyond"
+      title="制作物"
+      className="section--alt"
     >
-      <div className="grid grid--featured">
-        {featured.map((project, i) => (
-          <Reveal key={project.slug} as="div" delay={i * 80}>
-            <ProjectCard project={project} featured />
-          </Reveal>
-        ))}
-      </div>
-
-      <h3 className="subhead">その他の制作物</h3>
       <div className="grid grid--cards">
-        {others.map((project, i) => (
-          <Reveal key={project.slug} as="div" delay={i * 50}>
-            <ProjectCard project={project} />
+        {sorted.map((item, i) => (
+          <Reveal key={item.key} as="div" delay={Math.min(i, 6) * 50}>
+            <WorkCard item={item} />
           </Reveal>
         ))}
       </div>

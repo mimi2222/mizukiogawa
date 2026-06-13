@@ -6,7 +6,7 @@ interface Props {
   /** 連続表示で少しずつ遅らせるときに使う（ms） */
   delay?: number
   className?: string
-  as?: 'div' | 'li' | 'section' | 'article'
+  as?: 'div' | 'li' | 'section' | 'article' | 'figure'
 }
 
 /**

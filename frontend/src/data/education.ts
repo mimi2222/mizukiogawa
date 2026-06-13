@@ -13,11 +13,16 @@ export const education: EducationItem[] = [
     school: '東京大学 工学部 電子情報工学科',
   },
   {
+    period: '2023.9 – 2024.5',
+    school: 'University of British Columbia',
+    detail: 'Exchange Student / Major: Computer Engineering',
+  },
+  {
     period: '2021.4 – 2023.3（進学）',
     school: '東京大学 教養学部 前期課程 理科一類',
   },
   {
     period: '2018.4 – 2021.3（卒業）',
-    school: '豊島岡女子学園高等学校',
+    school: '私立豊島岡女子学園高等学校',
   },
 ]

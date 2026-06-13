@@ -1,12 +1,7 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import { Layout } from './components/Layout'
 import { Home } from './pages/Home'
-import { About } from './pages/About'
-import { Projects } from './pages/Projects'
 import { ProjectDetail } from './pages/ProjectDetail'
-import { Experience } from './pages/Experience'
-import { Beyond } from './pages/Beyond'
-import { Contact } from './pages/Contact'
 import { NotFound } from './pages/NotFound'
 
 export default function App() {
@@ -18,13 +13,16 @@ export default function App() {
     <BrowserRouter basename={basename}>
       <Routes>
         <Route element={<Layout />}>
+          {/* About / Profile / Experience / Projects は 1 ページに縦並び */}
           <Route index element={<Home />} />
-          <Route path="about" element={<About />} />
-          <Route path="projects" element={<Projects />} />
           <Route path="projects/:slug" element={<ProjectDetail />} />
-          <Route path="experience" element={<Experience />} />
-          <Route path="beyond" element={<Beyond />} />
-          <Route path="contact" element={<Contact />} />
+          {/* 旧ページ URL は 1 ページ構成の該当セクションへ集約 */}
+          <Route path="about" element={<Navigate to="/" replace />} />
+          <Route path="profile" element={<Navigate to="/#profile" replace />} />
+          <Route path="projects" element={<Navigate to="/#projects" replace />} />
+          <Route path="experience" element={<Navigate to="/#experience" replace />} />
+          <Route path="contact" element={<Navigate to="/" replace />} />
+          <Route path="beyond" element={<Navigate to="/#projects" replace />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>

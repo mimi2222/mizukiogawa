@@ -9,7 +9,9 @@ export const projects: Project[] = [
     org: '東京大学 苗村研究室',
     period: '2025年4月 〜 現在',
     stack: ['Python', 'TypeScript', 'Next.js', 'React', 'FastAPI', 'Azure OpenAI Service', 'Vercel'],
+    image: '/images/cloth_customization.png',
     featured: true,
+    tags: ['tech', 'creative'],
     summary:
       '衣服画像とカスタマイズの方向性を入力すると、素材の制約を考慮した案・完成予想図・段階的な制作手順を自動生成。複数LLMのパイプラインとして設計・実装した。IPSJ INTERACTION 2026 で上位入選。',
     blocks: [
@@ -40,108 +42,36 @@ export const projects: Project[] = [
         label: 'デモ動画',
         url: 'https://drive.google.com/file/d/17QG3zszXMdqs28_rrNa2AtFWDW12BXlq/view?usp=sharing',
       },
+      // IPSJ INTERACTION 2026 提出論文（PDF）— 詳細ページのいちばん下に表示
+      { label: 'IPSJ提出論文', url: 'https://www.interaction-ipsj.org/proceedings/2026/data/pdf/3B40.pdf' },
     ],
   },
   {
-    slug: 'neoai-chat-ui-renewal',
-    title: 'neoAI Chat — 全画面UIリニューアル',
-    subtitle: '企業向け生成AI活用SaaS',
-    kind: 'インターン',
-    org: '株式会社neoAI',
-    period: '2025年10月 〜 現在',
-    stack: [
-      'TypeScript',
-      'React',
-      'Next.js',
-      'FastAPI',
-      'Azure OpenAI Service',
-      'Key Vault',
-      'Container Apps',
-      'Docker',
-      'GitHub Actions',
-      'Figma',
-    ],
-    featured: true,
+    slug: 'exchange-app-dev',
+    title: '交換留学中のアプリ開発',
+    subtitle: 'チーム開発（交換留学中）',
+    kind: 'チーム開発',
+    org: 'University of British Columbia',
+    period: '2023年9月 〜 2024年5月',
+    stack: ['JavaScript', 'Azure', 'Static Web Apps', 'Container Apps'],
+    image: '/images/coding_while_exchage.png',
+    tags: ['tech'],
     summary:
-      '展示会に向けた3ヶ月間の全画面UIリニューアルをメインエンジニアとして主導。デザインシステムの設計から全コンポーネント統一まで担当し、数千万円規模の受注に貢献した。',
+      '交換留学中に多様な母語を持つ現地学生と、2つのWebアプリを共同開発。会話をLLMで自動要約するチャットアプリと、複数言語の音声入力に対応した日記アプリを手がけた。',
     blocks: [
       {
         heading: '概要',
-        body: '社内データを活用した業務特化のAIアシスタントをノーコードで構築できる、企業向け生成AI活用SaaSプロダクト。メール作成・議事録要約・社内問い合わせ対応など幅広い業務シーンへの適用を可能にしており、複数の導入形態（SaaS・シングルテナント・オンプレミス等）を持つ。',
+        body: '交換留学中、多様な母語を持つ現地学生とのチームで2つのWebアプリを共同開発した。異なる言語・文化的背景を持つメンバーと協働しながら、LLMの活用や多言語対応といったテーマに取り組んだ。',
       },
       {
-        heading: '自分の役割',
-        body: '展示会に向けた3ヶ月間の全画面UIリニューアルをメインエンジニアとして主導した。既存UIはデザインシステムが統一されておらず、機能追加のたびに一貫性が失われていくという課題があり、デザインシステムの設計・整備から全コンポーネントの統一まで根本から作り直す大規模な改修を担当した。',
-      },
-      {
-        heading: '特に注力したこと',
-        body: 'デザイナーとコンポーネントの粒度や設計について繰り返し議論し、他社のデザインシステムも参照しながら拡張性と使いやすさを両立する構造を追求した。リリース前には他部署のメンバーに実際に試用してもらいフィードバックを収集するレビュー会を企画・実施。文言一つひとつの認知負荷を下げるために1つのコピーに1本のMTGを設けることもあった。インターンという立場上スケジュールが合わない場面も多かったが、レビュー依頼のタイミングや作業スケジュールを細かく調整し、チームの進捗が止まらないよう動き続けた。',
-      },
-      {
-        heading: '成果',
-        body: '展示会当日に顧客から「UIがわかりやすい」と直接評価を受け、数千万円規模のソリューション案件の受注に貢献した。',
-      },
-    ],
-  },
-  {
-    slug: 'neoai-chat-auth',
-    title: 'neoAI Chat — 認証・認可基盤の設計・実装',
-    subtitle: '外部サービス連携',
-    kind: 'インターン',
-    org: '株式会社neoAI',
-    stack: ['TypeScript', 'React', 'Next.js', 'Azure Key Vault', 'App Registration'],
-    summary:
-      '外部サービス連携に必要な認証・認可基盤を設計・実装。トークン暗号化や連携切断時の無効化など、セキュリティ要件を網羅的に洗い出して実装した。',
-    blocks: [
-      {
-        heading: '概要・役割',
-        body: '外部サービスとの連携に必要な認証・認可基盤の設計・実装を担当した。トークンの暗号化や連携切断時の無効化など、セキュリティ面での考慮事項が多く、想定されうる状況を網羅的に洗い出して精査した。将来的な拡張性を担保するため他サービスの認証仕様を調査した上で設計し、公式ドキュメントを読み込みながら慎重に実装を進めた。',
-      },
-    ],
-  },
-  {
-    slug: 'exam-generation-poc',
-    title: '模擬試験問題生成プロジェクト',
-    subtitle: 'LLM活用 PoC開発（サブPM）',
-    kind: 'インターン',
-    org: '株式会社neoAI',
-    period: '2024年5月 〜',
-    stack: ['Python', 'PyTorch', 'Azure OpenAI Service'],
-    summary:
-      '模擬試験問題の自動生成プロジェクトにサブPMとして参画。LLMの選定・ファインチューニング・モデル構造検討を推進し、ルールベース処理の切り出しでAPIコストと処理時間を削減した。',
-    blocks: [
-      {
-        heading: '概要・役割',
-        body: '企業向けソリューション案件として、模擬試験問題の自動生成プロジェクトにサブPMとしてPoC開発の段階から参画した。週次のクライアントミーティングで要件をすり合わせながら、LLMの選定・ファインチューニング・モデル構造の検討を推進した。既存のモデル構造にとらわれず新しい構造を提案するとともに、ルールベースで処理できる部分を切り出すことでAPIコストの削減と処理時間の短縮を実現した。',
-      },
-    ],
-  },
-  {
-    slug: 'llm-chat-app',
-    title: 'LLM活用 Webチャットアプリ',
-    subtitle: 'チーム開発（交換留学中）',
-    kind: 'チーム開発',
-    org: 'University of British Columbia',
-    period: '2024年1月 〜 2024年5月（約4ヶ月）',
-    stack: ['JavaScript', 'Azure', 'Static Web Apps', 'Container Apps'],
-    summary:
-      '現地学生とLLMを活用したWebチャットアプリを共同開発。会話内容をLLMで自動要約・表示する機能を設計し、主にフロントエンドを担当した。',
-    blocks: [
-      {
-        heading: '概要・役割',
+        heading: 'LLM活用 Webチャットアプリ',
         body: '現地学生とLLMを活用したWebチャットアプリを共同開発した。会話内容をLLMで自動要約・表示する機能を設計し、主にフロントエンドの実装を担当した。要約情報をUIに自然に組み込むための表示方法を工夫し、ツールチップ形式での実装を採用した。',
       },
+      {
+        heading: '多言語対応 音声日記アプリ',
+        body: '多様な母語を持つ学生と、複数言語の音声入力から日記記録ができるアプリを共同開発した。それぞれが自分の言語で気軽に記録を残せる体験を目指した。',
+      },
     ],
-  },
-  {
-    slug: 'voice-diary',
-    title: '多言語対応 音声日記アプリ',
-    subtitle: 'チーム開発（交換留学中）',
-    kind: 'チーム開発',
-    org: 'University of British Columbia',
-    stack: ['JavaScript'],
-    summary:
-      '多様な母語を持つ学生と、複数言語の音声入力から日記記録ができるアプリを共同開発した。',
   },
   {
     slug: 'emotion-transcription',
@@ -150,6 +80,8 @@ export const projects: Project[] = [
     kind: 'チーム開発',
     org: '人工知能の演習',
     stack: ['Python', 'PyTorch', 'BERT'],
+    image: '/images/emotion_recognition.png',
+    tags: ['tech'],
     summary:
       '音声の文字起こし時に感情も分析し、テキスト末尾に絵文字を付与するシステム。テキストと音響特徴量の感情を融合させ、BERTのファインチューニングで分類部分を担当した。',
     blocks: [
@@ -166,6 +98,8 @@ export const projects: Project[] = [
     kind: 'チーム開発',
     org: '情報可視化の演習',
     stack: ['情報可視化系ライブラリ'],
+    image: '/images/restaurant_openandclose.png',
+    tags: ['tech'],
     summary:
       '東京都内の飲食店の開業・閉業情報を年月ごとに可視化。エリアや時期ごとの傾向を直感的に把握できる形で表現した。',
   },
@@ -175,6 +109,8 @@ export const projects: Project[] = [
     subtitle: '個人開発',
     kind: '個人開発',
     stack: ['Python', 'OpenCV', 'MediaPipe'],
+    image: '/images/smilefilter.png',
+    tags: ['tech'],
     summary:
       '発表時に画面端に映る自身の表情が気になるという実体験から、オンラインMTG中に聞き手の顔を笑顔に変換するフィルターを作成した。',
     blocks: [
@@ -190,20 +126,26 @@ export const projects: Project[] = [
     subtitle: '個人開発',
     kind: '個人開発',
     stack: ['Python'],
+    image: '/images/koreanquiz.png',
+    tags: ['tech'],
     summary:
-      '韓国語学習に没頭していた時期に、習熟度に合わせた単語テストを自動生成するシステムを開発。自分が必要だと感じたものを自ら作るアプローチの原点のひとつ。',
+      '韓国語学習に没頭していた時期に、習熟度に合わせた単語テストを自動生成するシステムを開発した。',
   },
   {
-    slug: 'security-camera',
-    title: '自作防犯カメラ',
-    subtitle: '高校の研究授業',
-    kind: '研究授業',
+    slug: 'todai-ryugaku-gogo',
+    title: '東大留学GoGo 運営メンバー',
+    subtitle: '留学を目指す学生への情報発信・イベント運営（課外活動）',
+    kind: '課外活動',
+    org: '東大留学GoGo',
+    period: '2023年8月 〜 2024年8月',
+    image: '/images/ryuugaku_gogo.png',
+    tags: ['business'],
     summary:
-      '高校2年のときにストーカー被害に遭った経験から、研究授業を通して自作の防犯カメラを開発。技術が自分の身を守る武器になると実感し、エンジニアリングへの興味を持つきっかけの一つになった。',
+      '海外留学・交換留学を目指す学生に向けた情報提供・発信や、留学を身近に感じられるイベントの企画・運営を担当した。',
     blocks: [
       {
-        heading: '概要・背景',
-        body: '高校2年のときにストーカー被害に遭い、その経験から高校の研究授業を通して自作の防犯カメラを開発した。技術が自分の身を守る武器になると実感し、エンジニアリングへの興味を持つようになったきっかけの一つだ。',
+        heading: '概要・役割',
+        body: '海外留学・交換留学を目指す学生に向けて、留学に関する情報提供・発信を行う運営メンバーとして活動した。留学を身近に感じてもらえるようなイベントの企画・運営も担当し、自身の留学経験も踏まえて学生の挑戦を後押しした。',
       },
     ],
   },

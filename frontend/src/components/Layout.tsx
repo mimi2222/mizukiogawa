@@ -3,19 +3,26 @@ import { Outlet, useLocation } from 'react-router-dom'
 import { Header } from './Header'
 import { Footer } from './Footer'
 
-/** ページ遷移時に先頭へスクロールを戻す。 */
-function ScrollToTop() {
-  const { pathname } = useLocation()
+/** 遷移時のスクロール制御。ハッシュがあれば該当セクションへ、なければ先頭へ。 */
+function ScrollManager() {
+  const { pathname, hash } = useLocation()
   useEffect(() => {
+    if (hash) {
+      const el = document.getElementById(hash.slice(1))
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' })
+        return
+      }
+    }
     window.scrollTo(0, 0)
-  }, [pathname])
+  }, [pathname, hash])
   return null
 }
 
 export function Layout() {
   return (
     <>
-      <ScrollToTop />
+      <ScrollManager />
       <Header />
       <main className="main">
         <Outlet />

@@ -5,9 +5,10 @@ import { experience } from '../data/experience'
 export function Experience() {
   return (
     <Section
+      id="experience"
       eyebrow="Experience"
       title="経歴"
-      intro="長期インターンや課外活動を通じて積み重ねてきた経験です。"
+      className="section--alt"
     >
       <ol className="timeline">
         {experience.map((item, i) => (

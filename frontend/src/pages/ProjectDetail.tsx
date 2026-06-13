@@ -1,5 +1,6 @@
 import { Link, useParams } from 'react-router-dom'
 import { Reveal } from '../components/Reveal'
+import { Photo } from '../components/Photo'
 import { projects } from '../data/projects'
 
 export function ProjectDetail() {
@@ -12,7 +13,7 @@ export function ProjectDetail() {
         <div className="container narrow">
           <h1 className="section__title">実績が見つかりませんでした</h1>
           <p className="prose">
-            <Link to="/projects" className="link-arrow">
+            <Link to="/#projects" className="link-arrow">
               ← 制作物一覧へ戻る
             </Link>
           </p>
@@ -25,7 +26,7 @@ export function ProjectDetail() {
     <article className="section">
       <div className="container narrow">
         <Reveal className="detail__head">
-          <Link to="/projects" className="link-back">
+          <Link to="/#projects" className="link-back">
             ← 制作物一覧
           </Link>
           <div className="detail__meta">
@@ -44,6 +45,14 @@ export function ProjectDetail() {
               ))}
             </ul>
           )}
+        </Reveal>
+
+        <Reveal className="detail__cover">
+          <Photo
+            src={project.image ?? `/images/projects/${project.slug}.jpg`}
+            alt={project.title}
+            label={project.title}
+          />
         </Reveal>
 
         {project.blocks?.map((block, i) => (

@@ -1,18 +1,18 @@
 import { useEffect, useState } from 'react'
-import { Link, NavLink } from 'react-router-dom'
-import { profile } from '../data/profile'
+import { Link, useLocation } from 'react-router-dom'
 
+// 1ページ構成のセクションへスクロールするナビ（上から並ぶ順）。
 const navItems = [
-  { to: '/about', label: 'About' },
-  { to: '/projects', label: 'Projects' },
-  { to: '/experience', label: 'Experience' },
-  { to: '/beyond', label: 'Beyond' },
-  { to: '/contact', label: 'Contact' },
+  { id: 'about', label: 'About' },
+  { id: 'profile', label: 'Profile' },
+  { id: 'experience', label: 'Experience' },
+  { id: 'projects', label: 'Projects' },
 ]
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const location = useLocation()
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12)
@@ -21,14 +21,19 @@ export function Header() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  // トップページ内では同一ページ内スクロール。詳細ページからは / へ遷移し、
+  // ハッシュ経由でスクロール（Layout の ScrollManager が処理）。
+  const handleNav = (e: React.MouseEvent, id: string) => {
+    setMenuOpen(false)
+    if (location.pathname === '/') {
+      e.preventDefault()
+      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
   return (
     <header className={`header ${scrolled ? 'header--scrolled' : ''}`}>
       <div className="container header__inner">
-        <Link to="/" className="header__logo" onClick={() => setMenuOpen(false)}>
-          <span className="header__logo-mark">M</span>
-          <span className="header__logo-name">{profile.name}</span>
-        </Link>
-
         <button
           type="button"
           className="header__toggle"
@@ -41,16 +46,14 @@ export function Header() {
 
         <nav className={`header__nav ${menuOpen ? 'header__nav--open' : ''}`}>
           {navItems.map((item) => (
-            <NavLink
-              key={item.to}
-              to={item.to}
-              className={({ isActive }) =>
-                `header__link ${isActive ? 'header__link--active' : ''}`
-              }
-              onClick={() => setMenuOpen(false)}
+            <Link
+              key={item.id}
+              to={`/#${item.id}`}
+              className="header__link"
+              onClick={(e) => handleNav(e, item.id)}
             >
               {item.label}
-            </NavLink>
+            </Link>
           ))}
         </nav>
       </div>

@@ -7,7 +7,15 @@ export const experience: ExperienceItem[] = [
     period: '2024年5月 〜 現在',
     stack: ['TypeScript', 'React', 'Next.js', 'Python', 'FastAPI', 'Azure'],
     description:
-      '企業向け生成AI活用SaaS「neoAI Chat」のフロントエンド開発・全画面UIリニューアル、外部サービス連携の認証基盤、LLM活用PoC（サブPM）まで幅広く担当。PoC開発から本番実装、顧客折衝までを一貫して経験している。',
+      'ソフトウェアエンジニアとして、企業向け生成AI活用SaaS「neoAI Chat」のUI・機能開発に携わる。',
+  },
+  {
+    role: '3Dデザイン制作',
+    org: '小川峰株式会社',
+    period: '現在進行中',
+    stack: ['Rhinoceros', 'Fusion 360'],
+    description:
+      '布地専用の3Dプリンターを用いて、手作業では不可能な精緻な装飾デザインの3Dデータ制作に携わっている。Rhinoceros・Fusion 360 を独学で習得。研究（衣服カスタマイズ）の延長として取り組んでいる。',
   },
   {
     role: 'メディアアートインストラクター・開発',
@@ -25,10 +33,10 @@ export const experience: ExperienceItem[] = [
     description: 'Pythonを用いた大規模データ収集・構造化を担当した。',
   },
   {
-    role: '運営メンバー（課外活動）',
-    org: '東大留学GoGo',
-    period: '2023年8月 〜 2024年8月',
+    role: 'ビジネス開発インターン',
+    org: '株式会社ベルパーク',
+    period: '2022年1月 〜 2022年12月',
     description:
-      '海外留学・交換留学を目指す学生向けに情報提供・発信を実施。留学を身近に感じられるイベントの企画・運営も担当した。',
+      'ビジネスコンテストでの入賞をきっかけに参加。優秀な女性人材の就職を支援する新サービスの考案・立ち上げと、人材開発に携わった。',
   },
 ]

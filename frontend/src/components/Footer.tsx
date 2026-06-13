@@ -1,21 +1,23 @@
-import { Link } from 'react-router-dom'
-import { contactLinks, profile } from '../data/profile'
+import { contactLinks } from '../data/profile'
+import { BrandIcon } from './BrandIcon'
 
 export function Footer() {
   return (
     <footer className="footer">
       <div className="container footer__inner">
-        <div>
-          <p className="footer__name">{profile.name}</p>
-          <p className="footer__roles">{profile.roles.join(' / ')}</p>
-        </div>
         <nav className="footer__links">
           {contactLinks.map((link) => (
-            <a key={link.label} href={link.href} target="_blank" rel="noreferrer">
-              {link.label}
+            <a
+              key={link.label}
+              href={link.href}
+              target="_blank"
+              rel="noreferrer"
+              aria-label={link.label}
+              className={link.icon ? 'footer__icon-link' : undefined}
+            >
+              {link.icon ? <BrandIcon name={link.icon} /> : link.label}
             </a>
           ))}
-          <Link to="/contact">Contact</Link>
         </nav>
       </div>
     </footer>
