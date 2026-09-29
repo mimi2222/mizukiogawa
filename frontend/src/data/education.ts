@@ -15,7 +15,7 @@ export const education: EducationItem[] = [
   {
     period: '2023.9 – 2024.5',
     school: 'University of British Columbia',
-    detail: 'Exchange Student / Major: Computer Engineering',
+    detail: 'Exchange Student / Computer Engineering',
   },
   {
     period: '2021.4 – 2023.3（進学）',

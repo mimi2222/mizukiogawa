@@ -1,31 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="14" fill="#18181b" />
-  <!-- 幸運の四つ葉のクローバー -->
-  <g transform="translate(32 32) scale(0.82) translate(-32 -32)">
-    <g fill="#34d27e">
-      <path
-        d="M 32 32 C 30 27, 17 27, 17 17 C 17 11, 28 11, 32 20 C 36 11, 47 11, 47 17 C 47 27, 34 27, 32 32 Z"
-        transform="rotate(45 32 32)"
-      />
-      <path
-        d="M 32 32 C 30 27, 17 27, 17 17 C 17 11, 28 11, 32 20 C 36 11, 47 11, 47 17 C 47 27, 34 27, 32 32 Z"
-        transform="rotate(135 32 32)"
-      />
-      <path
-        d="M 32 32 C 30 27, 17 27, 17 17 C 17 11, 28 11, 32 20 C 36 11, 47 11, 47 17 C 47 27, 34 27, 32 32 Z"
-        transform="rotate(225 32 32)"
-      />
-      <path
-        d="M 32 32 C 30 27, 17 27, 17 17 C 17 11, 28 11, 32 20 C 36 11, 47 11, 47 17 C 47 27, 34 27, 32 32 Z"
-        transform="rotate(315 32 32)"
-      />
-    </g>
-    <path
-      d="M 32 34 C 30 44, 34 49, 31 56"
-      fill="none"
-      stroke="#1f9d57"
-      stroke-width="3.2"
-      stroke-linecap="round"
-    />
+  <!-- 杉の木 -->
+  <rect x="28.5" y="50" width="7" height="12" rx="1.5" fill="#7a4a2a" />
+  <g fill="#2f8a4a">
+    <path d="M32 2 L44 20 H20 Z" />
+    <path d="M32 12 L48 32 H16 Z" />
+    <path d="M32 24 L52 46 H12 Z" />
+    <path d="M32 34 L56 54 H8 Z" />
   </g>
 </svg>

@@ -770,6 +770,12 @@ a.card:hover {
 .timeline__item:last-child::before {
   display: none;
 }
+/* 続きがあるときは最後の線を消さず、下へ伸ばしてフェードさせる */
+.timeline--truncated .timeline__item:last-child::before {
+  display: block;
+  bottom: -3rem;
+  background: linear-gradient(to bottom, var(--line-strong), transparent);
+}
 .timeline__marker {
   position: absolute;
   left: 0;
@@ -800,6 +806,20 @@ a.card:hover {
   color: var(--ink-soft);
   font-size: 0.96rem;
   max-width: 64ch;
+}
+.timeline__more {
+  margin-left: 0.5rem;
+  padding-left: 2.2rem;
+}
+.timeline__more-btn {
+  font-size: 0.82rem;
+  color: var(--ink-muted);
+  transition: color 0.2s var(--ease);
+}
+.timeline__more-btn:hover {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 /* ---- filter pills (work & beyond) -------------------------------------- */
